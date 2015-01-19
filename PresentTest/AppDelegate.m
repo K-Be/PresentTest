@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "FirstViewController.h"
+#import "SecondViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -16,6 +19,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	
+	_firstNavController = [[UINavigationController alloc] initWithRootViewController:[[FirstViewController alloc] initWithNibName:nil bundle:nil]];
+	_secondNavController = [[UINavigationController alloc] initWithRootViewController:[[SecondViewController alloc] initWithNibName:nil bundle:nil]];
+	
+	_tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+	[_tabBarController setViewControllers:@[_firstNavController, _secondNavController]];
+	
+	_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	_window.rootViewController = _tabBarController;
+	
+	[_window makeKeyAndVisible];
+		
 	// Override point for customization after application launch.
 	return YES;
 }
